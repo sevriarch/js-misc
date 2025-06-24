@@ -1,12 +1,29 @@
-import Solver from './solver';
+import Solver from "./solver";
 
-describe('constructor tests', () => {
-    const table: [string, Record<string, number>][] = [
-        ['empty grid', {}],
-        ['some values', { "1,9": 1, "4,6": 9, "9,1": 5, "5,7": 2 }]
+describe("constructor tests", () => {
+    const errtable: [string, [number, number, number][]][] = [
+        ["x too low", [[0, 5, 1]]],
+        ["x too high", [[10, 5, 1]]],
+        ["x not an integer", [[5.5, 5, 1]]],
+        ["y too low", [[5, 0, 1]]],
+        ["y too high", [[5, 10, 1]]],
+        ["y not an integer", [[5, 5.5, 1]]],
+        ["value too low", [[5, 5, 0]]],
+        ["value too high", [[5, 5, 10]]],
+        ["value not an integer", [[5, 5, 5.5]]],
+        ["duplicate entries", [[5, 5, 5], [4, 4, 4], [5, 5, 5]]]
     ];
 
-    test.each(table)('%s', (_, data) => {
+    test.each(errtable)("%s throws an error", (_, data) => {
+        expect(() => new Solver(data)).toThrow();
+    });
+
+    const table: [string, Record<string, number>][] = [
+        ["empty grid", {}],
+        ["some values", { "1,9": 1, "4,6": 9, "9,1": 5, "5,7": 2 }]
+    ];
+
+    test.each(table)("%s", (_, data) => {
         const entries: [number, number, number][] = [];
         for (const d of Object.keys(data)) {
             const v = d.split(",");

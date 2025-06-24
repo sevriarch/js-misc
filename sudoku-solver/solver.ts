@@ -23,7 +23,7 @@ export default class Solver {
             y--;
 
             if (this.grid[x][y].length === 1) {
-                throw new Error(`tile [${x}, ${y}] was defined twice, as ${this.grid[x][y][0]} and then as ${val}`);
+                throw new Error(`tile [${x + 1}, ${y + 1}] was defined twice, as ${this.grid[x][y][0]} and then as ${val}`);
             }
 
             this.grid[x][y] = [val];
