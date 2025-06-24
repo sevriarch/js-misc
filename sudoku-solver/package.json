@@ -1,0 +1,20 @@
+{
+  "name": "sudoku-solver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint *.ts && tsc -d && jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/jest": "^30.0.0",
+    "eslint": "^9.29.0",
+    "jest": "^30.0.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  }
+}
